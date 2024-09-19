@@ -3,15 +3,10 @@
 
 using namespace ArgumentParser;
 
-ArgParser::ArgParser(const std::string& name) {
-    name_ = name;
-}
+ArgParser::ArgParser(const std::string& name): name_(name) {}
 
-ArgParser::StringArgument::StringArgument(const char short_name, const std::string& long_name, const std::string& description) {
-    this->short_name = short_name;
-    this->long_name = long_name;
-    this->description = description;
-}
+ArgParser::StringArgument::StringArgument(const char short_name, const std::string& long_name, const std::string& description):
+                                            short_name(short_name), long_name(long_name), description(description) {}
 
 ArgParser::StringArgument& ArgParser::AddStringArgument(const char short_name, const std::string& long_name, const std::string& description) {
     string_args_.emplace_back(short_name, long_name, description);
@@ -67,11 +62,8 @@ ArgParser::StringArgument& ArgParser::StringArgument::Positional() {
     return *this;
 }
 
-ArgParser::IntArgument::IntArgument(const char short_name, const std::string& long_name, const std::string& description) {
-    this->short_name = short_name;
-    this->long_name = long_name;
-    this->description = description;
-}
+ArgParser::IntArgument::IntArgument(const char short_name, const std::string& long_name, const std::string& description):
+                                    short_name(short_name), long_name(long_name), description(description) {}
 
 ArgParser::IntArgument& ArgParser::AddIntArgument(const char short_name, const std::string& long_name, const std::string& description) {
     int_args_.emplace_back(short_name, long_name, description);
@@ -127,11 +119,8 @@ ArgParser::IntArgument& ArgParser::IntArgument::Positional() {
     return *this;
 }
 
-ArgParser::Flag::Flag(const char short_name, const std::string& long_name, const std::string& description) {
-    this->short_name = short_name;
-    this->long_name = long_name;
-    this->description = description;
-}
+ArgParser::Flag::Flag(const char short_name, const std::string& long_name, const std::string& description):
+                        short_name(short_name), long_name(long_name), description(description) {}
 
 ArgParser::Flag& ArgParser::AddFlag(const char short_name, const std::string& long_name, const std::string& description) {
     flags_.emplace_back(short_name, long_name, description);
@@ -188,11 +177,8 @@ ArgParser::Flag& ArgParser::Flag::Positional() {
 }
 
 
-ArgParser::Helper::Helper(const char short_name, const std::string& long_name, const std::string& description) {
-    this->short_name = short_name;
-    this->long_name = long_name;
-    this->description = description;
-}
+ArgParser::Helper::Helper(const char short_name, const std::string& long_name, const std::string& description):
+                            short_name(short_name), long_name(long_name), description(description) {}
 
 void ArgParser::AddHelp(const char short_name, const std::string& long_name, const std::string& description) {
     helper_ = Helper(short_name, long_name, description);
