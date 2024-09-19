@@ -5,10 +5,7 @@
 
 using namespace ArgumentParser;
 
-/*
-    Функция принимает в качество аргумента строку, разделяет ее по "пробелу"
-    и возвращает вектор полученных слов
-*/
+
 std::vector<std::string> SplitString(const std::string& str) {
     std::istringstream iss(str);
 
@@ -164,10 +161,8 @@ TEST(ArgParserTestSuite, HelpStringTest) {
 
 
     ASSERT_TRUE(parser.Parse(SplitString("app --help")));
-    // Проверка закоментирована намеренно. Ождиается, что результат вызова функции будет приблизительно такой же,
-    // но не с точностью до символа
 
-     ASSERT_EQ(
+    ASSERT_EQ(
          parser.HelpDescription(),
          "My Parser\n"
          "Some Description about program\n"
